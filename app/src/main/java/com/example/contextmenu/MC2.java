@@ -19,6 +19,7 @@ public class MC2 extends AppCompatActivity implements AdapterView.OnItemLongClic
     Double [] arr = new Double[20];
     AlertDialog.Builder adb;
     Double sum = 0.0;
+     int pos=0;
 
 
     @Override
@@ -52,18 +53,20 @@ public class MC2 extends AppCompatActivity implements AdapterView.OnItemLongClic
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        pos = position+1;
         adb = new AlertDialog.Builder(this);
         adb.setTitle("choose");
         adb.setMessage("choose one of the options");
         adb.setPositiveButton("position", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                TV2.setText(""+position+1);
+                TV2.setText(""+pos);
             }
         });
         adb.setNegativeButton("sum", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                sum = 0.0;
                 for (int g = 0;g<position;g++){
                     sum = (Double) (sum+arr[g]);
                 }
